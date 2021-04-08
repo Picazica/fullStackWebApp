@@ -1,0 +1,47 @@
+* {
+  margin: none;
+  padding: none;
+}
+
+body {
+  background-color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  list-style: none;
+}
+
+.navBar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.loginForm .login-btn,
+.register-btn {
+  padding: 4px;
+  margin: 2%;
+  color: black;
+  background-color: cadetblue;
+}
+
+.loginForm .login-btn {
+  margin-left: 0%;
+}
+
+.loginForm .register-btn {
+  margin-right: 10%;
+  margin-left: 5%;
+}
+@media all and (min-width: 480px) {
+  .loginForm {
+    width: 200px;
+  }
+  .loginForm .login-btn,
+  .register-btn {
+    margin: 0%;
+  }
+}
