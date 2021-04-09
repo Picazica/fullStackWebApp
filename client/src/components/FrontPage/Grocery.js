@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 const Grocery = props => {
   const changeStatus = () => {
-    props.setStatus(prev => !prev);
-    props.setLoggedIn(prev => !prev);
+    props.setToken(prev => !prev);
   };
   return (
     <div>

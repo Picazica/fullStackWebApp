@@ -37,7 +37,7 @@ const Cart = props => {
       <nav>
         <Link to="/">
           <button className="closeCart-btn">
-            <i class="fa fa-times" aria-hidden="true"></i>
+            <i className="fa fa-times" aria-hidden="true"></i>
           </button>
         </Link>
       </nav>

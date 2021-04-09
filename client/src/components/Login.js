@@ -14,8 +14,6 @@ const Login = props => {
 
   const checkUser = async e => {
     e.preventDefault();
-    console.log(user);
-
     const response = await fetch("/api/login", {
       method: "POST",
       headers: {
@@ -23,11 +21,7 @@ const Login = props => {
       },
       body: JSON.stringify(user),
     });
-
-    if (response.status === 200) {
-      console.log("Ok");
-      props.setStatus(prev => !prev);
-    }
+    props.setToken(response.headers.get("auth_token"));
   };
 
   return (
