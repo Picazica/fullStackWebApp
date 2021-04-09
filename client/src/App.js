@@ -5,13 +5,15 @@ import Login from "./components/Login";
 import RegisterUser from "./components/RegisterUser";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Products from "./components/FrontPage/Products";
+import Grocery from "./components/FrontPage/Grocery";
+import Cart from "./components/FrontPage/Cart";
 
 function App() {
   let flag = 0;
+  const [cart, setCart] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState(false);
-  console.log(status);
 
   const getProducts = async () => {
     const response = await fetch("/api/products", {
@@ -30,7 +32,6 @@ function App() {
       return { id, price, title, img };
     });
     setProducts(products);
-    console.log(products);
   };
 
   useEffect(() => {
@@ -42,22 +43,29 @@ function App() {
 
   return (
     <div className="App">
-      {!status ? (
-        <Router>
+      <Router>
+        {" "}
+        {!status ? (
           <Switch>
             <Route path="/" exact>
               <Login setStatus={setStatus} />
             </Route>
             <Route path="/register" component={RegisterUser}></Route>
           </Switch>
-        </Router>
-      ) : (
-        <Products
-          setLoggedIn={setLoggedIn}
-          setStatus={setStatus}
-          products={products}
-        />
-      )}
+        ) : (
+          <div>
+            <Switch>
+              <Route path="/" exact>
+                <Grocery setLoggedIn={setLoggedIn} setStatus={setStatus} />
+                <Products cart={cart} setCart={setCart} products={products} />
+              </Route>
+              <Route path="/cart" exact>
+                <Cart cart={cart} setCart={setCart} />
+              </Route>
+            </Switch>
+          </div>
+        )}
+      </Router>
     </div>
   );
 }

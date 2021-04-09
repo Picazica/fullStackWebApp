@@ -1,3 +1,9 @@
-const router = require("express").Router;
+const router = require("express").Router();
+const Product = require("../model/Product");
 
-router.get("/api/products", (req, res) => {});
+router.get("/", async (req, res) => {
+  const result = await Product.findOne({});
+  res.send(result);
+});
+
+module.exports = router;
